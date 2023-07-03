@@ -1,0 +1,99 @@
+@keyframes flip {
+    0% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+}
+@keyframes flip-in {
+    0% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+@keyframes flip-out {
+    0% { transform: rotateX(0deg); }
+    100% { transform: rotateX(90deg); }
+}
+
+div.flip-clock {
+    --card-size: 24rem;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+div.flip-clock > div.card {
+    --car-bg-color: #aaa;
+}
+html[theme-mode=dark] div.flip-clock > div.card {
+    --car-bg-color: #333;
+}
+
+div.flip-clock > div.card > span.val.text:nth-child(2) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+div.flip-clock > div.card > span.val.text::before,
+div.flip-clock > div.card > span.val.text::after {
+    content: attr(data-val);
+
+    display: flex;
+    justify-content: center;
+    width: var(--card-size);
+    height: calc(var(--card-size) * 0.41);
+    font-size: calc(var(--card-size) * 0.72);
+    cursor: default;
+    user-select: none;
+
+    overflow: hidden;
+
+    background-color: var(--car-bg-color);
+}
+div.flip-clock > div.card > span.val.text::before {
+    padding-top: calc(var(--card-size) * 0.075);
+    align-items: start;
+    border-radius: 16px 16px 0 0;
+
+    transform-origin: 0 calc(var(--card-size) * 0.50);
+    transform: rotateX(0deg);
+}
+div.flip-clock > div.card > span.val.text::after {
+    z-index: 9;
+    margin-top: calc(var(--card-size) * 0.02);
+    padding-bottom: calc(var(--card-size) * 0.075);
+    align-items: end;
+
+    border-radius: 0 0 16px 16px;
+
+    transform-origin: 0 calc(var(--card-size) * -0.01);
+    transform: rotateX(0deg);
+}
+div.flip-clock > div.card > span.val.text > span.meridiem {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: calc(var(--card-size) * 0.12);
+    margin-top: calc(var(--card-size) * 0.5);
+    padding-top: calc(var(--card-size) * 0.24);
+    cursor: default;
+    user-select: none;
+    font-size: calc(var(--card-size) * 0.12);
+    font-weight: bold;
+
+    transform-origin: 0 calc(var(--card-size) * -0.01);
+    transform: rotateX(0deg);
+}
+div.flip-clock > div.card > span.val.text.play::after,
+div.flip-clock > div.card > span.val.text.play > span.meridiem {
+    animation: flip 1s ease-in-out;
+}
+div.flip-clock > div.card > span.val.text.play-in::after,
+div.flip-clock > div.card > span.val.text.play-in > span.meridiem {
+    animation: flip-in .2s ease-in-out;
+}
+div.flip-clock > div.card > span.val.text.play-out::before {
+    animation: flip-out .2s ease-in-out;
+}
