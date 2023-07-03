@@ -1,7 +1,3 @@
-@keyframes flip {
-    0% { transform: rotateX(180deg); }
-    100% { transform: rotateX(0deg); }
-}
 @keyframes flip-in {
     0% { transform: rotateX(90deg); }
     100% { transform: rotateX(0deg); }
@@ -85,10 +81,6 @@ div.flip-clock > div.card > span.val.text > span.meridiem {
 
     transform-origin: 0 calc(var(--card-size) * -0.01);
     transform: rotateX(0deg);
-}
-div.flip-clock > div.card > span.val.text.play::after,
-div.flip-clock > div.card > span.val.text.play > span.meridiem {
-    animation: flip 1s ease-in-out;
 }
 div.flip-clock > div.card > span.val.text.play-in::after,
 div.flip-clock > div.card > span.val.text.play-in > span.meridiem {
