@@ -85,7 +85,12 @@
     hourCard.querySelector('span.meridiem').textContent = Number(hour) >= 12 ? 'PM' : 'AM'
   })()
 
-  function flipCard(/** @type {HTMLDivElement} */ card, /** @type {string} */ val) {
+  /**
+   * @param {HTMLDivElement} card
+   * @param {string} val
+   * @return {Promise<void>}
+   */
+  function flipCard(card, val) {
     return new Promise(re => {
       const cardVal = card.querySelector('span.val')
       /** @type {HTMLDivElement} */
