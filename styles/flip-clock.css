@@ -17,13 +17,15 @@ div.flip-clock {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 36px;
 }
 div.flip-clock > div.card {
-    --car-bg-color: #aaa;
+    --car-bg-color: #ccc;
+    filter: drop-shadow(0 0 16px #999);
 }
 html[theme-mode=dark] div.flip-clock > div.card {
-    --car-bg-color: #333;
+    --car-bg-color: #222;
+    filter: drop-shadow(0 0 16px #222);
 }
 
 div.flip-clock > div.card > span.val.text:nth-child(2) {
