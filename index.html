@@ -51,7 +51,7 @@
 <div class='flip-clock'>
     <div class='card hour'>
         <span class='val text' data-val='00'>
-            <span class='meridiem'>PM</span>
+            <span class='meridiem'>XM</span>
         </span>
     </div>
     <div class='card minute'>
@@ -63,6 +63,9 @@
 </div>
 <script type='module' src='js/theme-switch.js'></script>
 <script type='module'>
+  function format(/** @type {number} */num) {
+    return num < 10 ? `0${num}` : `${num}`
+  }
   function createElementByHTMLString(htmlString) {
     const template = document.createElement('template')
     template.innerHTML = htmlString.trim()
@@ -70,30 +73,37 @@
   }
   /** @type {HTMLDivElement} */
   const flipClock = document.querySelector('.flip-clock')
-  /** @type {HTMLDivElement} */
-  const card = flipClock.querySelector('div.card.second')
+  /** @type {[HTMLDivElement, HTMLDivElement, HTMLDivElement]} */
+  const [hourCard, minuteCard, secondCard] = flipClock.querySelectorAll('div.card') ?? []
 
+  const curDate = new Date()
+  let [hour, minute, second] = [curDate.getHours(), curDate.getMinutes(), curDate.getSeconds()]
+  ;(() => {
+    hourCard.querySelector('span.val').dataset.val = format(hour)
+    minuteCard.querySelector('span.val').dataset.val = format(minute)
+    secondCard.querySelector('span.val').dataset.val = format(second)
+    hourCard.querySelector('span.meridiem').textContent = hour >= 12 ? 'PM' : 'AM'
+  })()
   const milliseconds = new Date().getMilliseconds()
   setTimeout(function flip() {
-    const cardVal = card.querySelector('span.val')
+    const cardVal = secondCard.querySelector('span.val')
+    second = format(new Date().getSeconds())
     /** @type {HTMLDivElement} */
     const newCardVal = createElementByHTMLString(
       cardVal.outerHTML
-        .replace(/data-val="(\d+)"/g, `data-val='${
-          new Date().getSeconds()
-        }'`)
+        .replace(/data-val="(\d+)"/g, `data-val='${second}'`)
     )
 
     cardVal.classList.add('play-out')
-    card.replaceChildren(newCardVal, cardVal)
+    secondCard.replaceChildren(newCardVal, cardVal)
 
     setTimeout(() => {
       cardVal.classList.remove('play-out')
       newCardVal.classList.add('play-in')
-      card.replaceChildren(cardVal, newCardVal)
+      secondCard.replaceChildren(cardVal, newCardVal)
       setTimeout(() => {
         newCardVal.classList.remove('play-in')
-        card.replaceChildren(newCardVal)
+        secondCard.replaceChildren(newCardVal)
         const milliseconds = new Date().getMilliseconds()
         setTimeout(flip, 1000 - milliseconds)
       }, 200)
