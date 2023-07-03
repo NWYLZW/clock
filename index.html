@@ -93,6 +93,14 @@
         cardVal.outerHTML
           .replace(/data-val="(\d+)"/g, `data-val='${val}'`)
       )
+      if (card === hourCard) {
+        const meridiem = newCardVal.querySelector('span.meridiem')
+        if (Number(val) >= 12) {
+          meridiem.textContent = 'PM'
+        } else {
+          meridiem.textContent = 'AM'
+        }
+      }
 
       cardVal.classList.add('play-out')
       card.replaceChildren(newCardVal, cardVal)
