@@ -15,3 +15,21 @@ body {
 
     font-family: 'Roboto Mono', monospace;
 }
+
+div.screen-control.btn {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+div.screen-control.btn img {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+div.screen-control.btn:hover {
+    filter: drop-shadow(0 0 4px #999999);
+}

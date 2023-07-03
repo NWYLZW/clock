@@ -48,6 +48,9 @@
     </div>
     <div class='cur-card'></div>
 </div>
+<div class='screen-control btn'>
+    <img src='./imgs/fullscreen.svg' alt='FullScreen'>
+</div>
 <div class='flip-clock'>
     <div class='card hour'>
         <span class='val text' data-val='00'>
@@ -62,6 +65,26 @@
     </div>
 </div>
 <script type='module' src='js/theme-switch.js'></script>
+<script type='module'>
+  const screenControl = document.querySelector('.screen-control')
+  screenControl.addEventListener('click', () => {
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+    } else {
+      document.documentElement.requestFullscreen()
+    }
+  })
+  window.addEventListener('fullscreenchange', () => {
+    const img = screenControl.querySelector('img')
+    if (document.fullscreenElement) {
+      img.src = './imgs/fullscreen_exit.svg'
+      img.alt = 'ExitFullScreen'
+    } else {
+      img.src = './imgs/fullscreen.svg'
+      img.alt = 'FullScreen'
+    }
+  })
+</script>
 <script type='module'>
   function format(/** @type {number} */num) {
     return num < 10 ? `0${num}` : `${num}`
