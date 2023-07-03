@@ -67,6 +67,12 @@ div.flip-clock > div.card > span.val.text::after {
     transform-origin: 0 calc(var(--card-size) * -0.01);
     transform: rotateX(0deg);
 }
+div.flip-clock > div.card > span.val.text.play-in {
+    z-index: 10;
+}
+div.flip-clock > div.card > span.val.text.play-out {
+    z-index: 11;
+}
 div.flip-clock > div.card > span.val.text > span.meridiem {
     z-index: 10;
     position: absolute;
