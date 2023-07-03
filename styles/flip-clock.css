@@ -84,8 +84,8 @@ div.flip-clock > div.card > span.val.text > span.meridiem {
 }
 div.flip-clock > div.card > span.val.text.play-in::after,
 div.flip-clock > div.card > span.val.text.play-in > span.meridiem {
-    animation: flip-in .2s ease-in-out;
+    animation: flip-in .4s ease-in-out;
 }
 div.flip-clock > div.card > span.val.text.play-out::before {
-    animation: flip-out .2s ease-in-out;
+    animation: flip-out .4s ease-in-out;
 }
