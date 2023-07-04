@@ -38,11 +38,11 @@ div.flip-clock > div.card > span.val.text::before,
 div.flip-clock > div.card > span.val.text::after {
     content: attr(data-val);
 
-    display: flex;
-    justify-content: center;
+    display: block;
     width: var(--card-size);
-    height: calc(var(--card-size) * 0.41);
+    height: calc(var(--card-size) * 0.49);
     font-size: calc(var(--card-size) * 0.72);
+    text-align: center;
     cursor: default;
     user-select: none;
 
@@ -51,18 +51,20 @@ div.flip-clock > div.card > span.val.text::after {
     background-color: var(--car-bg-color);
 }
 div.flip-clock > div.card > span.val.text::before {
-    padding-top: calc(var(--card-size) * 0.075);
-    align-items: start;
+    line-height: calc(var(--card-size) * +1);
+
+    vertical-align: bottom;
     border-radius: 16px 16px 0 0;
 
     transform-origin: 0 calc(var(--card-size) * 0.50);
     transform: rotateX(0deg);
 }
 div.flip-clock > div.card > span.val.text::after {
+    line-height: calc(var(--card-size) * -1);
+
+    vertical-align: bottom;
     z-index: 9;
     margin-top: calc(var(--card-size) * 0.02);
-    padding-bottom: calc(var(--card-size) * 0.075);
-    align-items: end;
 
     border-radius: 0 0 16px 16px;
 
