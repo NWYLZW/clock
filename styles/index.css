@@ -1,11 +1,11 @@
 html[theme-mode=dark] body {
-    --font-color: #F0F0F0FF;
-    --bg-color: #050505FF;
+    --font-color: #d0d0d0;
+    --bg-color: #000;
 }
 
 body {
-    --font-color: #2A2A2AFF;
-    --bg-color: #F0F0F0FF;
+    --font-color: #2A2A2A;
+    --bg-color: #F0F0F0;
 
     margin: 0;
     width: 100vw;
