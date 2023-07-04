@@ -17,7 +17,7 @@ div.flip-clock {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 36px;
+    gap: 50px;
 }
 div.flip-clock > div.card {
     --car-bg-color: #ccc;
@@ -29,7 +29,7 @@ html[theme-mode=dark] div.flip-clock > div.card {
 }
 
 div.flip-clock > div.card > span.val.text {
-    perspective: 500px;
+    perspective: 800px;
 }
 div.flip-clock > div.card > span.val.text:nth-child(2) {
     position: absolute;
