@@ -158,7 +158,8 @@
       setTimeout(() => {
         cardVal.classList.remove('play-out')
         newCardVal.classList.add('play-in')
-        card.replaceChildren(cardVal, newCardVal)
+        newCardVal.remove()
+        card.append(newCardVal)
         setTimeout(() => {
           newCardVal.classList.remove('play-in')
           cardVal.remove()
