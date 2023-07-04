@@ -8,7 +8,7 @@
 }
 
 div.flip-clock {
-    --card-size: 24rem;
+    --card-size: 300px;
 
     position: fixed;
     top: 50%;
