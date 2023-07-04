@@ -153,7 +153,7 @@
       }
 
       cardVal.classList.add('play-out')
-      card.replaceChildren(newCardVal, cardVal)
+      card.prepend(newCardVal)
 
       setTimeout(() => {
         cardVal.classList.remove('play-out')
@@ -161,10 +161,10 @@
         card.replaceChildren(cardVal, newCardVal)
         setTimeout(() => {
           newCardVal.classList.remove('play-in')
-          card.replaceChildren(newCardVal)
+          cardVal.remove()
           re()
-        }, 400)
-      }, 400)
+        }, 390)
+      }, 390)
     })
   }
 
