@@ -64,6 +64,28 @@
         <span class='val text' data-val='00'></span>
     </div>
 </div>
+<script type='module'>
+  const body = document.body
+  let hideAll = false
+  body.addEventListener('dblclick', () => {
+    if (document.fullscreenElement) {
+      if (hideAll) {
+        hideAll = false
+        body.querySelectorAll(':scope > div:not(.flip-clock)').forEach((el) => {
+          el.style.display = ''
+        })
+        document.exitFullscreen()
+      } else {
+        hideAll = true
+        body.querySelectorAll(':scope > div:not(.flip-clock)').forEach((el) => {
+          el.style.display = 'none'
+        })
+      }
+    } else {
+      document.documentElement.requestFullscreen()
+    }
+  })
+</script>
 <script type='module' src='js/theme-switch.js'></script>
 <script type='module'>
   const screenControl = document.querySelector('.screen-control')
